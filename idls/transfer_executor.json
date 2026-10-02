@@ -1,0 +1,426 @@
+{
+  "address": "49oGdjBxZQbSNWKReYqecthnCiEDziBLgX5wJsna2jxK",
+  "metadata": {
+    "name": "transfer_executor",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "execute_payment",
+      "discriminator": [
+        86,
+        4,
+        7,
+        7,
+        120,
+        139,
+        232,
+        139
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "treasury_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "recipient",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "fund_treasury",
+      "discriminator": [
+        71,
+        154,
+        45,
+        220,
+        206,
+        32,
+        174,
+        239
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "treasury_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize_treasury",
+      "discriminator": [
+        124,
+        186,
+        211,
+        195,
+        85,
+        165,
+        129,
+        166
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true,
+          "address": "mV8B9brE2rWGfbRWUKhqBws2PzdQLztfFWqLLZ8Rnn3"
+        },
+        {
+          "name": "treasury_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "treasury_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "authorized_policy_authority",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "pause_treasury",
+      "discriminator": [
+        51,
+        151,
+        231,
+        204,
+        3,
+        101,
+        24,
+        107
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "treasury_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "resume_treasury",
+      "discriminator": [
+        177,
+        133,
+        83,
+        81,
+        209,
+        6,
+        241,
+        251
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "treasury_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  116,
+                  114,
+                  101,
+                  97,
+                  115,
+                  117,
+                  114,
+                  121,
+                  95,
+                  115,
+                  116,
+                  97,
+                  116,
+                  101
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "TreasuryState",
+      "discriminator": [
+        240,
+        56,
+        226,
+        158,
+        138,
+        244,
+        79,
+        154
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidPaymentAmount",
+      "msg": "Payment amount must be greater than zero"
+    },
+    {
+      "code": 6001,
+      "name": "UnauthorizedPolicyAuthority",
+      "msg": "Unauthorized policy authority"
+    },
+    {
+      "code": 6002,
+      "name": "TreasuryPaused",
+      "msg": "Treasury is paused"
+    },
+    {
+      "code": 6003,
+      "name": "TreasuryAlreadyPaused",
+      "msg": "Treasury is already paused"
+    },
+    {
+      "code": 6004,
+      "name": "TreasuryNotPaused",
+      "msg": "Treasury is not paused"
+    },
+    {
+      "code": 6005,
+      "name": "InsufficientTreasuryFunds",
+      "msg": "Insufficient treasury funds"
+    },
+    {
+      "code": 6006,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "TreasuryState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "authorized_policy_authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_paid",
+            "type": "u64"
+          },
+          {
+            "name": "payment_count",
+            "type": "u64"
+          },
+          {
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "constants": [
+    {
+      "name": "TREASURY_STATE_SEED",
+      "type": "bytes",
+      "value": "[116, 114, 101, 97, 115, 117, 114, 121, 95, 115, 116, 97, 116, 101]"
+    },
+    {
+      "name": "TREASURY_VAULT_SEED",
+      "type": "bytes",
+      "value": "[116, 114, 101, 97, 115, 117, 114, 121, 95, 118, 97, 117, 108, 116]"
+    }
+  ]
+}

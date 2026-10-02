@@ -1,0 +1,572 @@
+{
+  "address": "AReHvjWYQNZVB9PgcfcyqftKX4yJEoU54M9KTkGEBfm3",
+  "metadata": {
+    "name": "transfer_inspector",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_payment_request",
+      "discriminator": [
+        246,
+        150,
+        103,
+        37,
+        15,
+        36,
+        93,
+        100
+      ],
+      "accounts": [
+        {
+          "name": "requester",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "policy_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  108,
+                  105,
+                  99,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "payment_request",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  121,
+                  109,
+                  101,
+                  110,
+                  116,
+                  95,
+                  114,
+                  101,
+                  113,
+                  117,
+                  101,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "policy_config"
+              },
+              {
+                "kind": "account",
+                "path": "policy_config.request_count",
+                "account": "PolicyConfig"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "recipient",
+          "type": "pubkey"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "execute_payment_request",
+      "discriminator": [
+        33,
+        241,
+        127,
+        157,
+        71,
+        244,
+        147,
+        42
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "policy_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  108,
+                  105,
+                  99,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "payment_request",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  97,
+                  121,
+                  109,
+                  101,
+                  110,
+                  116,
+                  95,
+                  114,
+                  101,
+                  113,
+                  117,
+                  101,
+                  115,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "policy_config"
+              },
+              {
+                "kind": "account",
+                "path": "payment_request.request_id",
+                "account": "PaymentRequest"
+              }
+            ]
+          }
+        },
+        {
+          "name": "policy_authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  108,
+                  105,
+                  99,
+                  121,
+                  95,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "recipient",
+          "docs": [
+            "CHECK：收账的"
+          ],
+          "writable": true
+        },
+        {
+          "name": "treasury_state",
+          "writable": true
+        },
+        {
+          "name": "treasury_vault",
+          "writable": true
+        },
+        {
+          "name": "transfer_executor_program",
+          "address": "49oGdjBxZQbSNWKReYqecthnCiEDziBLgX5wJsna2jxK"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_policy",
+      "discriminator": [
+        9,
+        186,
+        86,
+        225,
+        129,
+        162,
+        231,
+        56
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true,
+          "address": "mV8B9brE2rWGfbRWUKhqBws2PzdQLztfFWqLLZ8Rnn3"
+        },
+        {
+          "name": "policy_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  108,
+                  105,
+                  99,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "operator",
+          "type": "pubkey"
+        },
+        {
+          "name": "max_payment",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "pause_policy",
+      "discriminator": [
+        162,
+        125,
+        168,
+        118,
+        196,
+        17,
+        113,
+        165
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "policy_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  108,
+                  105,
+                  99,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "resume_policy",
+      "discriminator": [
+        19,
+        5,
+        135,
+        187,
+        83,
+        243,
+        251,
+        235
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "policy_config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  108,
+                  105,
+                  99,
+                  121,
+                  95,
+                  99,
+                  111,
+                  110,
+                  102,
+                  105,
+                  103
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "PaymentRequest",
+      "discriminator": [
+        27,
+        20,
+        202,
+        96,
+        101,
+        242,
+        124,
+        69
+      ]
+    },
+    {
+      "name": "PolicyConfig",
+      "discriminator": [
+        219,
+        7,
+        79,
+        84,
+        175,
+        51,
+        148,
+        146
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "PaymentExceedsPolicyLimit",
+      "msg": "Payment amount exceeds policy limit"
+    },
+    {
+      "code": 6001,
+      "name": "PolicyPaused",
+      "msg": "Policy is paused"
+    },
+    {
+      "code": 6002,
+      "name": "PolicyAlreadyPaused",
+      "msg": "Policy is already paused"
+    },
+    {
+      "code": 6003,
+      "name": "PolicyNotPaused",
+      "msg": "Policy is not paused"
+    },
+    {
+      "code": 6004,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidPaymentRequestStatus",
+      "msg": "Payment request is not pending"
+    },
+    {
+      "code": 6006,
+      "name": "InvalidPaymentAmount",
+      "msg": "Payment amount must be greater than zero"
+    }
+  ],
+  "types": [
+    {
+      "name": "PaymentRequest",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "policy",
+            "type": "pubkey"
+          },
+          {
+            "name": "requester",
+            "type": "pubkey"
+          },
+          {
+            "name": "recipient",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "request_id",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "PaymentRequestStatus"
+              }
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PaymentRequestStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pending"
+          },
+          {
+            "name": "Executed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PolicyConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "pubkey"
+          },
+          {
+            "name": "operator",
+            "type": "pubkey"
+          },
+          {
+            "name": "max_payment",
+            "type": "u64"
+          },
+          {
+            "name": "total_executed",
+            "type": "u64"
+          },
+          {
+            "name": "request_count",
+            "type": "u64"
+          },
+          {
+            "name": "paused",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "constants": [
+    {
+      "name": "PAYMENT_REQUEST_SEED",
+      "type": "bytes",
+      "value": "[112, 97, 121, 109, 101, 110, 116, 95, 114, 101, 113, 117, 101, 115, 116]"
+    },
+    {
+      "name": "POLICY_AUTHORITY_SEED",
+      "type": "bytes",
+      "value": "[112, 111, 108, 105, 99, 121, 95, 97, 117, 116, 104, 111, 114, 105, 116, 121]"
+    },
+    {
+      "name": "POLICY_CONFIG_SEED",
+      "type": "bytes",
+      "value": "[112, 111, 108, 105, 99, 121, 95, 99, 111, 110, 102, 105, 103]"
+    }
+  ]
+}
