@@ -26,6 +26,7 @@ pub struct ExecutePayment<'info> {
     /// CHECK: 收款
     #[account(mut)]
     pub recipient: UncheckedAccount<'info>,
+    pub system_program: Program<'info, System>,
 }
 
 pub fn handle_execute_payment(ctx: Context<ExecutePayment>, amount: u64) -> Result<()> {

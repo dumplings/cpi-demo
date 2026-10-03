@@ -1,29 +1,28 @@
-import * as anchor from "@anchor-lang/core";
-import { Program } from "@anchor-lang/core";
-import { CpiDemo } from "../target/types/cpi_demo";
+import { before, describe } from "mocha";
 
-describe("cpi-demo", () => {
-  // Configure the client to use the local cluster.
-  anchor.setProvider(anchor.AnchorProvider.env());
+import { airdropTestParticipants, createTestContext } from "./helpers/context";
+import { registerAccountSecurityTests } from "./scenarios/account-security";
+import { registerAuthorizationSecurityTests } from "./scenarios/authorization-security";
+import { registerCpiSecurityTests } from "./scenarios/cpi-security";
+import { registerInitializationTests } from "./scenarios/initialization";
+import { registerLifecycleSecurityTests } from "./scenarios/lifecycle-security";
+import { registerPaymentExecutionTests } from "./scenarios/payment-execution";
+import { registerPaymentRequestTests } from "./scenarios/payment-request";
+import { registerRollbackTests } from "./scenarios/rollback";
 
-  const program = anchor.workspace.cpiDemo as Program<CpiDemo>;
+describe("CPI Lab", () => {
+  const ctx = createTestContext();
 
-  it("Initializes and increments a counter", async () => {
-    const [counter] = anchor.web3.PublicKey.findProgramAddressSync(
-      [Buffer.from("counter")],
-      program.programId
-    );
-
-    const initializeTx = await program.methods
-      .initialize()
-      .accountsPartial({ counter })
-      .rpc();
-    console.log("Initialize transaction signature", initializeTx);
-
-    const incrementTx = await program.methods
-      .increment()
-      .accountsPartial({ counter })
-      .rpc();
-    console.log("Increment transaction signature", incrementTx);
+  before(async () => {
+    await airdropTestParticipants(ctx);
   });
+
+  registerInitializationTests(ctx);
+  registerPaymentRequestTests(ctx);
+  registerAuthorizationSecurityTests(ctx);
+  registerAccountSecurityTests(ctx);
+  registerLifecycleSecurityTests(ctx);
+  registerCpiSecurityTests(ctx);
+  registerPaymentExecutionTests(ctx);
+  registerRollbackTests(ctx);
 });

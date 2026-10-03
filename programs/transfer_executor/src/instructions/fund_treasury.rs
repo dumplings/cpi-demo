@@ -15,6 +15,7 @@ pub struct FundTreasury<'info> {
         bump,
     )]
     pub treasury_vault: UncheckedAccount<'info>,
+    pub system_program: Program<'info, System>,
 }
 
 /// 仅是考虑到测试时使用的转账能力

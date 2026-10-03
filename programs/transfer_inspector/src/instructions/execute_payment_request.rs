@@ -55,6 +55,7 @@ pub struct ExecutePaymentRequest<'info> {
     #[account(mut)]
     pub treasury_vault: UncheckedAccount<'info>,
     pub transfer_executor_program: Program<'info, TransferExecutor>,
+    pub system_program: Program<'info, System>,
 }
 
 pub fn handle_execute_payment_request(ctx: Context<ExecutePaymentRequest>) -> Result<()> {
@@ -76,6 +77,7 @@ pub fn handle_execute_payment_request(ctx: Context<ExecutePaymentRequest>) -> Re
         treasury_state: ctx.accounts.treasury_state.to_account_info(),
         treasury_vault: ctx.accounts.treasury_vault.to_account_info(),
         recipient: ctx.accounts.recipient.to_account_info(),
+        system_program: ctx.accounts.system_program.to_account_info(),
     };
 
     let signer_seeds: &[&[&[u8]]] = &[&[POLICY_AUTHORITY_SEED, &[ctx.bumps.policy_authority]]];
