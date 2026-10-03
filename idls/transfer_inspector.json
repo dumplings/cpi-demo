@@ -1,5 +1,5 @@
 {
-  "address": "AReHvjWYQNZVB9PgcfcyqftKX4yJEoU54M9KTkGEBfm3",
+  "address": "2CVzr8eS28y5daWUYJfsQdG8jucoEC2V4A6mLvBUD1Nr",
   "metadata": {
     "name": "transfer_inspector",
     "version": "0.1.0",
@@ -215,9 +215,6 @@
         },
         {
           "name": "recipient",
-          "docs": [
-            "CHECK：收账的"
-          ],
           "writable": true
         },
         {
@@ -230,7 +227,7 @@
         },
         {
           "name": "transfer_executor_program",
-          "address": "49oGdjBxZQbSNWKReYqecthnCiEDziBLgX5wJsna2jxK"
+          "address": "FQEPdYMcvsPeafF7kgDRedjYndwUEmp8J2sYYPiA8V64"
         },
         {
           "name": "system_program",

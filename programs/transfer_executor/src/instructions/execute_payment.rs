@@ -15,15 +15,16 @@ pub struct ExecutePayment<'info> {
     )]
     pub treasury_state: Account<'info, TreasuryState>,
 
-    /// CHECK: zero-data account, 存sol的
+    /// CHECK: Canonical PDA; initialization creates a System-owned, zero-data vault.
     #[account(
         mut,
         seeds = [TREASURY_VAULT_SEED],
         bump,
+        owner = system_program::ID,
     )]
     pub treasury_vault: UncheckedAccount<'info>,
 
-    /// CHECK: 收款
+    /// CHECK: SOL destination; the calling policy program validates recipient identity.
     #[account(mut)]
     pub recipient: UncheckedAccount<'info>,
     pub system_program: Program<'info, System>,

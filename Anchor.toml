@@ -6,8 +6,8 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-transfer_executor = "49oGdjBxZQbSNWKReYqecthnCiEDziBLgX5wJsna2jxK"
-transfer_inspector = "AReHvjWYQNZVB9PgcfcyqftKX4yJEoU54M9KTkGEBfm3"
+transfer_executor = "FQEPdYMcvsPeafF7kgDRedjYndwUEmp8J2sYYPiA8V64"
+transfer_inspector = "2CVzr8eS28y5daWUYJfsQdG8jucoEC2V4A6mLvBUD1Nr"
 
 [provider]
 cluster = "localnet"

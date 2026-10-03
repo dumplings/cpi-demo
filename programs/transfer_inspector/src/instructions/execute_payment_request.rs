@@ -33,14 +33,14 @@ pub struct ExecutePaymentRequest<'info> {
     )]
     pub payment_request: Account<'info, PaymentRequest>,
 
-    /// CHECK: 触发 Program B 的 authority 身份
+    /// CHECK: A validates this PDA's seeds and signs for it when invoking B.
     #[account(
         seeds = [POLICY_AUTHORITY_SEED],
         bump,
     )]
     pub policy_authority: UncheckedAccount<'info>,
 
-    /// CHECK：收账的
+    /// CHECK: Must match the committed recipient and differ from the forwarded vault.
     #[account(
         mut,
         address = payment_request.recipient,
@@ -48,10 +48,10 @@ pub struct ExecutePaymentRequest<'info> {
     )]
     pub recipient: UncheckedAccount<'info>,
 
-    /// CHECK: A 只负责 forward
+    /// CHECK: Forwarded to trusted B, which validates its owner, type, and PDA.
     #[account(mut)]
     pub treasury_state: UncheckedAccount<'info>,
-    /// CHECK: A 只负责 forward
+    /// CHECK: Forwarded to trusted B, which validates its canonical vault PDA.
     #[account(mut)]
     pub treasury_vault: UncheckedAccount<'info>,
     pub transfer_executor_program: Program<'info, TransferExecutor>,

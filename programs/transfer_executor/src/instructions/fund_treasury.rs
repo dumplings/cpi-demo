@@ -8,7 +8,7 @@ pub struct FundTreasury<'info> {
     #[account(mut)]
     authority: Signer<'info>,
 
-    /// CHECK: 仅持有 sol
+    /// CHECK: Canonical vault PDA receiving SOL through a System Program transfer.
     #[account(
         mut,
         seeds = [TREASURY_VAULT_SEED],
@@ -18,7 +18,7 @@ pub struct FundTreasury<'info> {
     pub system_program: Program<'info, System>,
 }
 
-/// 仅是考虑到测试时使用的转账能力
+// Lab funding convenience; direct SOL transfers to the vault are also possible.
 pub fn handle_fund_treasury(ctx: Context<FundTreasury>, amount: u64) -> Result<()> {
     require!(amount > 0, ExecuteError::InvalidPaymentAmount);
 

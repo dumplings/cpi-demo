@@ -9,7 +9,7 @@ pub use constants::*;
 pub use instructions::*;
 pub use state::*;
 
-declare_id!("49oGdjBxZQbSNWKReYqecthnCiEDziBLgX5wJsna2jxK");
+declare_id!("FQEPdYMcvsPeafF7kgDRedjYndwUEmp8J2sYYPiA8V64");
 
 #[program]
 pub mod transfer_executor {
